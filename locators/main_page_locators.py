@@ -3,6 +3,8 @@ from selenium.webdriver.common.by import By
 
 
 class MainPageLocators:
+
+    # FULL_LOAD_PAGE = [By.CSS_SELECTOR, ".BurgerIngredients_ingredients__1N8v2"]
     
     SOUCES = [By.XPATH, "//h2[2][text()='Соусы']"]
 
@@ -20,7 +22,7 @@ class MainPageLocators:
 
     BUTTON_ENTER_ACCOUNT = [By.XPATH, "//div/button[text()='Войти в аккаунт']"]
 
-    HEADER_PERSONAL_ACCOUNT = [By.XPATH, "*//div/header/nav/a/p[text()='Личный Кабинет']"]
+    HEADER_PERSONAL_ACCOUNT = [By.XPATH, "//div/header/nav/a/p[text()='Личный Кабинет']"]
 
     CONSTRUCTOR_ICON = [By.XPATH, "//nav/ul/li[1]/a/p[text()='Конструктор']"]
 

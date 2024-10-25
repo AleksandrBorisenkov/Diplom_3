@@ -1,8 +1,8 @@
 import allure
+
 from selenium.webdriver import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support.color import Color
 
 
 class BasePage:
@@ -53,20 +53,7 @@ class BasePage:
         element = self.find_element_with_wait(locator)
         return element.send_keys(Keys.ENTER)
 
-    @allure.step('Имитируем переключение на вкладку')
-    def send_tab_key(self, num):
-        new_tab = self.driver.window_handles
-        return self.driver.switch_to.window(new_tab[num])
-
     @allure.step('Устанавливаем какой-то текст в инпут')
     def set_text_to_element(self, locator, text):
         element = self.find_element_with_wait(locator)
         element.send_keys(text)
-
-    def get_color(self, locator, color):
-        element = self.find_element_with_wait(locator)
-        return Color.from_string(element.value_of_css_property(color))
-
-    def get_color_2(self, locator):
-        element = self.find_element_with_wait(locator)
-        return self.driver.execute_script("arguments[0].border = '#4C4CFF';", element)

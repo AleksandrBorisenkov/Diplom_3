@@ -14,7 +14,11 @@ class ProfilePage(BasePage):
         return self.current_url
 
     def click_history_button(self):
-        # self.find_element_with_wait(ProfilePageLocators.ORDER_HISTORY)
+        self.find_element_with_wait(ProfilePageLocators.ORDER_HISTORY)
         self.find_element_to_be_clickable(ProfilePageLocators.ORDER_HISTORY)
         self.click_on_element(ProfilePageLocators.ORDER_HISTORY)
         return self.current_url()
+
+    def click_logout_botton(self):
+        self.find_element_to_be_clickable(ProfilePageLocators.LOCATORS_LOGOUT_BUTTON)
+        self.click_on_element(ProfilePageLocators.LOCATORS_LOGOUT_BUTTON)

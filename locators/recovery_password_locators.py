@@ -11,9 +11,8 @@ class ForgotPasswordPageLocators:
 
     EYE_BUTTON = [By.XPATH, "//fieldset/div/div/div"]
 
-    ACTIVE_FIELD= [By.CSS_SELECTOR, ".input_status_active"]
-
     PASSWORD_INPUT = [By.XPATH, "//input[@type='password']"]
 
     RECOVERY_FORM_1 = [By.XPATH, "//div/main/div/h2[text()='Восстановление пароля']"]
-# input pr-6 pl-6 input_type_text input_size_default input_status_active
+
+    ACTIVE_FIELD = [By.XPATH,  "//div/form/fieldset[1]/div/div/input[@type='text']"]

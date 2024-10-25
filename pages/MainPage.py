@@ -14,7 +14,8 @@ class MainPage(BasePage):
         self.find_element_with_wait(MainPageLocators.BUNS)
 
     def find_and_click_profile_link(self):
-        self.find_element_with_wait(MainPageLocators.HEADER_PERSONAL_ACCOUNT)
+        # self.full_load_page(MainPageLocators.FULL_LOAD_PAGE)
+        self.find_element_to_be_clickable(MainPageLocators.HEADER_PERSONAL_ACCOUNT)
         self.click_on_element(MainPageLocators.HEADER_PERSONAL_ACCOUNT)
 
     def click_enter_account(self):
