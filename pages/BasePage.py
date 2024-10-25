@@ -8,7 +8,6 @@ from selenium.webdriver.support.color import Color
 class BasePage:
 
     def __init__(self, driver):
-        self.window_handles = None
         self.driver = driver
 
     @allure.step('Открываем страницу по ссылке')

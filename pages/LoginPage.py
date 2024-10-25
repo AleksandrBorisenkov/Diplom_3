@@ -2,12 +2,13 @@ import allure
 
 from locators.login_page_locators import LoginPageLocators
 from pages.BasePage import BasePage
+from url import URL
 
 
 class LoginPage(BasePage):
 
-    def login_page_return_url(self):
-        return self.current_url
+    def login_page_open(self):
+        return self.driver.get(URL.LOGIN_URL)
 
     def wait_login_form(self):
         return self.get_text_from_element(LoginPageLocators.LOGIN_FORM)

@@ -2,9 +2,13 @@ import allure
 
 from locators.main_page_locators import MainPageLocators
 from pages.BasePage import BasePage
+from url import URL
 
 
 class MainPage(BasePage):
+
+    def main_page_open(self):
+        return self.driver.get(URL.MAIN_URL)
 
     def wait_buns(self):
         self.find_element_with_wait(MainPageLocators.BUNS)
