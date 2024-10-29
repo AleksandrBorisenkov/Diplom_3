@@ -3,11 +3,13 @@ import allure
 from selenium.webdriver import Keys
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.common.action_chains import ActionChains
 
 
 class BasePage:
 
     def __init__(self, driver):
+        self.ActionChains = None
         self.driver = driver
 
     @allure.step('Открываем страницу по ссылке')
@@ -53,7 +55,17 @@ class BasePage:
         element = self.find_element_with_wait(locator)
         return element.send_keys(Keys.ENTER)
 
-    @allure.step('Устанавливаем какой-то текст в инпут')
+    @allure.step('Передаем текст в инпут')
     def set_text_to_element(self, locator, text):
         element = self.find_element_with_wait(locator)
         element.send_keys(text)
+
+    @allure.step('Функция перетаскивания элемента - drag and drop.')
+    def drag_and_drop(self, source, target):
+        action = ActionChains(self.driver)
+        source = self.find_element_with_wait(source)
+        target = self.find_element_with_wait(target)
+        return  action.drag_and_drop(source, target).perform()
+
+
+

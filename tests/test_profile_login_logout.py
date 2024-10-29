@@ -1,17 +1,16 @@
-import time
-
-import pytest
 import allure
 
 from pages.LoginPage import LoginPage
 from pages.MainPage import MainPage
-from pages.HistoryPageg import HistoryPage
+from pages.HistoryPage import HistoryPage
 from pages.ProfilePage import ProfilePage
 from url import URL
 
+
+@allure.description('Логинемся и идем в личный кабинет и выходим от туда.')
 class TestProfilePage:
 
-    @allure.title('Логинемся, идем в личный кабинет, история заказов, выход из системы')
+    @allure.title('Логинемся, идем в личный кабинет, в историю заказов и выход из системы.')
     def test_login_history_logout(self, driver):
         login_page = LoginPage(driver)
         main_page = MainPage(driver)
