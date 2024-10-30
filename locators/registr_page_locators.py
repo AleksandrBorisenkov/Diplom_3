@@ -15,5 +15,3 @@ class RegisterPageLocators:
     QUASTION_ALLREADY_REG = [By.XPATH, "//div/p[text()='Уже зарегистрированы?']"]
 
     LINK_ALLREADY_REG = [By.XPATH, "//div/p/a[text()='Войти']"]
-
-

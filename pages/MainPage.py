@@ -1,5 +1,3 @@
-import time
-
 import allure
 
 from locators.main_page_locators import MainPageLocators
@@ -35,10 +33,12 @@ class MainPage(BasePage):
 
     @allure.step('Берем номер заказа и сохраняем его для дальнейшего использования.')
     def wait_order_modal_counter(self):
-        order_num = []
         self.find_element_with_wait(MainPageLocators.CREATE_ORDER_MODAL_COUNTER)
-        order_num.append(self.get_text_from_element(MainPageLocators.CREATE_ORDER_MODAL_COUNTER))
-        return order_num
+        return self.get_text_from_element(MainPageLocators.CREATE_ORDER_MODAL_COUNTER)
+
+    @allure.step('Отдельная функция закрытия модалки с номером созданного заказа.')
+    def close_order_modal_counter(self):
+        self.click_on_element(MainPageLocators.CLOSE_ORDER_MODAL_COUNTER)
 
     @allure.step('Жмем на карточку булки и получаем модалку с деталями ингридиента.')
     def click_on_ingredients(self):
@@ -51,7 +51,6 @@ class MainPage(BasePage):
         self.find_element_with_wait(MainPageLocators.INGREDIENT_INFO_TEXT)
         self.get_text_from_element(MainPageLocators.INGREDIENT_INFO_TEXT)
         return self.get_text_from_element(MainPageLocators.INGREDIENT_INFO_TEXT)
-
 
     @allure.step('Закрываем модалку ингридиентов.')
     def close_info_ingredients(self):
@@ -66,7 +65,8 @@ class MainPage(BasePage):
 
     @allure.step('Перетаскиваем булку в область конструктора.')
     def drag_and_drop_element(self):
-        return self.drag_and_drop(MainPageLocators.BUN2_DRAG,MainPageLocators.CONSTRUCTOR_DROP)
+        return self.drag_and_drop(MainPageLocators.BUN2_DRAG, MainPageLocators.CONSTRUCTOR_DROP)
 
+    @allure.step('Получаем текст счетчика ингридиета в списке ингридиентов.')
     def get_counter_text(self):
         return self.get_text_from_element(MainPageLocators.COUNTER)

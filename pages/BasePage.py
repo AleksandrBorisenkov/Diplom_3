@@ -8,6 +8,7 @@ from selenium.webdriver.common.action_chains import ActionChains
 
 class BasePage:
 
+    @allure.step('Подгружаем драйвер и нужные пакеты.')
     def __init__(self, driver):
         self.ActionChains = None
         self.driver = driver
@@ -66,6 +67,3 @@ class BasePage:
         source = self.find_element_with_wait(source)
         target = self.find_element_with_wait(target)
         return  action.drag_and_drop(source, target).perform()
-
-
-

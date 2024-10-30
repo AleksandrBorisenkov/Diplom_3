@@ -30,7 +30,7 @@ class MainPageLocators:
 
     BUTTON_ENTER_ACCOUNT = [By.XPATH, "//div/button[text()='Войти в аккаунт']"]
 
-    HEADER_PERSONAL_ACCOUNT = [By.XPATH, "//div/header/nav/a/p[text()='Личный Кабинет']"]
+    HEADER_PERSONAL_ACCOUNT = [By.XPATH, "//*[@id='root']/div/header/nav/a/p[text()='Личный Кабинет']"]
 
     CONSTRUCTOR_ICON = [By.XPATH, "//nav/ul/li[1]/a/p[text()='Конструктор']"]
 
@@ -42,4 +42,5 @@ class MainPageLocators:
 
     COUNTER = [By.XPATH, "//*[@id='root']/div/main/section[1]/div[2]/ul[1]/a[2]/div[1]/p[text()]"]
 
-    CREATE_ORDER_MODAL_COUNTER = [By.XPATH, "//*[@id='root']/div/section/div[1]/div/h2[text()]"]
+    CREATE_ORDER_MODAL_COUNTER = [By.XPATH, "//*[@id='root']/div/section/div[1]/div/h2[contains (text(), '14')]"]
+    CLOSE_ORDER_MODAL_COUNTER = [By.XPATH, "//*[@id='root']/div/section/div[1]/button[@type='button']"]
