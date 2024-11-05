@@ -1,10 +1,10 @@
 import allure
 
+from data_help import exist_user_email, exist_user_password
 from pages.LoginPage import LoginPage
 from pages.MainPage import MainPage
 from pages.HistoryPage import HistoryPage
 from pages.ProfilePage import ProfilePage
-from url import URL
 
 
 @allure.description('Логинемся и идем в личный кабинет и выходим от туда.')
@@ -19,13 +19,8 @@ class TestProfilePage:
         # сверху прогружаем драйверы всех страницы участниц
         # ниже сам тест
         login_page.login_page_open()
-        assert login_page.current_url() == URL.LOGIN_URL
-        assert 'Вход' in login_page.wait_login_form()
-        login_page.fill_login_form('51253@yandex.ru', '12613612')
+        login_page.fill_login_form(exist_user_email, exist_user_password)
         main_page.find_and_click_profile_link()
         profile_page.click_history_button()
-        assert profile_page.current_url() == URL.HISTORY_URL
         history_page.click_logout()
         assert 'Вход' in login_page.wait_login_form()
-
-

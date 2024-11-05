@@ -1,5 +1,6 @@
 import random
 
+
 # сгенерировали почту
 def mail_generator():
     letters = 'qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM'
@@ -21,3 +22,7 @@ def name_generator():
     frs_name = ''.join(random.choice(letters) for i in range(10))
     lst_name = ''.join(random.choice(letters) for i in range(10))
     return f"{frs_name} {lst_name}"
+
+# захардкодил существующего юзера
+exist_user_email = "51253@yandex.ru"
+exist_user_password = "12613612"

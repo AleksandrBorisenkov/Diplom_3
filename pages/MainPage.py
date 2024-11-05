@@ -9,7 +9,7 @@ class MainPage(BasePage):
 
     @allure.step('Инициируем открытие страницы.')
     def main_page_open(self):
-        return self.driver.get(URL.MAIN_URL)
+        return self.get_url(URL.MAIN_URL)
 
     @allure.step('Ожидаем появление булок.')
     def wait_buns(self):
@@ -56,6 +56,9 @@ class MainPage(BasePage):
     def close_info_ingredients(self):
         self.find_element_with_wait(MainPageLocators.INGREDIENT_INFO_MODAL_ACTIVE)
         self.click_on_element(MainPageLocators.INGREDIENT_INFO_CLOSE_BUTTON)
+
+    @allure.step('Проверили что модалка с ингридиентами закрыта.')
+    def check_hide_info_ingredients_modal(self):
         self.find_element_with_wait(MainPageLocators.INGREDIENT_INFO_MODAL_HIDE)
 
     @allure.step('Жмем Лента заказов.')
@@ -70,3 +73,7 @@ class MainPage(BasePage):
     @allure.step('Получаем текст счетчика ингридиета в списке ингридиентов.')
     def get_counter_text(self):
         return self.get_text_from_element(MainPageLocators.COUNTER)
+
+    @allure.step ('Получаю текст блока Булки, как якорь для главной страницы и написания ассерта для теста.')
+    def get_text_buns(self):
+        return self.get_text_from_element(MainPageLocators.BUNS)

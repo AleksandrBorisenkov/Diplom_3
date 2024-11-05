@@ -10,7 +10,7 @@ class ProfilePage(BasePage):
 
     @allure.step('Инициируем открытие страницы.')
     def profile_page_url(self):
-        return self.driver.get(URL.PROFILE_URL)
+        return self.get_url(URL.PROFILE_URL)
 
     @allure.step('Ждем кнопки История заказов и кликаем по ней.')
     def click_history_button(self):

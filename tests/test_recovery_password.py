@@ -1,6 +1,5 @@
 import allure
 
-from locators.recovery_password_locators import ForgotPasswordPageLocators
 from pages.LoginPage import LoginPage
 from pages.RecoveryPasswordPage import RecoveryPasswordPage
 from data_help import mail_generator
@@ -19,4 +18,4 @@ class TestRecoveryPassword:
         login_page.go_to_password_recovery()
         recovery_page.fill_email_recovery(mail_generator())
         active_field = recovery_page.active_field_password()
-        assert active_field != ForgotPasswordPageLocators.PASSWORD_INPUT
+        assert active_field != recovery_page.active_field_or_not

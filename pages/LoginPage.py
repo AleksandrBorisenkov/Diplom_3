@@ -9,7 +9,7 @@ class LoginPage(BasePage):
 
     @allure.step('Инициируем открытие страницы.')
     def login_page_open(self):
-        return self.driver.get(URL.LOGIN_URL)
+        return self.get_url(URL.LOGIN_URL)
 
     @allure.step('Получам текст названия формы входа.')
     def wait_login_form(self):

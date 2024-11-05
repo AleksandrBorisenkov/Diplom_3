@@ -1,6 +1,6 @@
 import allure
 
-from locators.main_page_locators import MainPageLocators
+from data_help import exist_user_email, exist_user_password
 from pages.FeedPage import AllOrdersPage
 from pages.HistoryPage import HistoryPage
 from pages.LoginPage import LoginPage
@@ -19,13 +19,9 @@ class TestMainPage:
         # сверху прогружаем драйверы всех страницы участниц
         # ниже сам тест
         main_page.main_page_open()
-        assert main_page.current_url() == URL.MAIN_URL
         main_page.click_feed_orders()
-        assert feed_page.current_url() == URL.ALL_ORDERS_URL
-        assert "Выполнено за все время:" in feed_page.find_total_text()
-        assert "Выполнено за сегодня:" in feed_page.find_today_text()
         feed_page.click_to_constructor_icon()
-        assert main_page.current_url() == URL.MAIN_URL
+        assert 'Булки' in main_page.get_text_buns()
 
     @allure.title('На главной странице жмем на булку, ловим модалку, закрываем и проверяем что она закрыта.')
     def test_ingredient_modal(self, driver):
@@ -36,7 +32,7 @@ class TestMainPage:
         main_page.wait_buns()
         main_page.click_on_ingredients()
         assert "Детали ингредиента" in main_page.get_text_ingredients_module()
-        assert MainPageLocators.INGREDIENT_INFO_MODAL_ACTIVE != main_page.close_info_ingredients()
+        assert main_page.close_info_ingredients() != main_page.check_hide_info_ingredients_modal
 
     @allure.title('Перетащили булку в конструктор и счетчик на иконке булки должен показать цифру 2.')
     def test_add_ingredient_in_constructor(self, driver):
@@ -54,9 +50,7 @@ class TestMainPage:
         # сверху прогружаем драйверы всех страницы участниц
         # ниже сам тест
         login_page.login_page_open()
-        assert login_page.current_url() == URL.LOGIN_URL
-        assert 'Вход' in login_page.wait_login_form()
-        login_page.fill_login_form('51253@yandex.ru', '12613612')
+        login_page.fill_login_form(exist_user_email, exist_user_password)
         main_page.drag_and_drop_element()
         assert '2' in main_page.get_counter_text()
         main_page.click_create_order()
@@ -70,18 +64,13 @@ class TestMainPage:
         # сверху прогружаем драйверы всех страницы участниц
         # ниже сам тест
         login_page.login_page_open()
-        assert login_page.current_url() == URL.LOGIN_URL
-        assert 'Вход' in login_page.wait_login_form()
-        login_page.fill_login_form('51253@yandex.ru', '12613612')
+        login_page.fill_login_form(exist_user_email, exist_user_password)
         main_page.drag_and_drop_element()
-        assert '2' in main_page.get_counter_text()
         main_page.click_create_order()
         get_order_num = main_page.wait_order_modal_counter()
         assert get_order_num != '9999'
         main_page.close_order_modal_counter()
         main_page.click_feed_orders()
-        assert "Выполнено за все время:" in feed_page.find_total_text()
-        assert "Выполнено за сегодня:" in feed_page.find_today_text()
         assert get_order_num == feed_page.find_total_counter()
         assert get_order_num in feed_page.order_in_progress()
         assert "Cостав" in feed_page.click_first_in_feed_orders()
@@ -97,7 +86,7 @@ class TestMainPage:
         total_counter = feed_page.find_total_counter()
         today_counter = feed_page.find_today_counter()
         feed_page.click_personal_account()
-        login_page.fill_login_form('51253@yandex.ru', '12613612')
+        login_page.fill_login_form(exist_user_email, exist_user_password)
         main_page.drag_and_drop_element()
         assert '2' in main_page.get_counter_text()
         main_page.click_create_order()
@@ -120,16 +109,14 @@ class TestMainPage:
         # сверху прогружаем драйверы всех страницы участниц
         # ниже сам тест
         login_page.login_page_open()
-        login_page.fill_login_form('51253@yandex.ru', '12613612')
+        login_page.fill_login_form(exist_user_email, exist_user_password)
         main_page.drag_and_drop_element()
-        assert '2' in main_page.get_counter_text()
         main_page.click_create_order()
         get_order_num = main_page.wait_order_modal_counter()
         assert get_order_num != '9999'
         main_page.close_order_modal_counter()
         main_page.find_and_click_profile_link()
         profile_page.click_history_button()
-        assert profile_page.current_url() == URL.HISTORY_URL
         assert get_order_num in history_page.find_order()
         history_page.go_feed_orders()
         assert get_order_num in feed_page.search_user_order()

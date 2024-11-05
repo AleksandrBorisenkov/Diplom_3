@@ -4,14 +4,14 @@ from selenium.webdriver.common.by import By
 
 class RegisterPageLocators:
 
-    EMAIL_INPUT = [By.XPATH, "//div/div/label[text()='Email']"]
+    EMAIL_INPUT = [By.XPATH, ".//label[text()='Email']"]
 
-    NAME_INPUT = [By.XPATH, "//div/div/label[text()='Имя']"]
+    NAME_INPUT = [By.XPATH, ".//label[text()='Имя']"]
 
-    PASSWORD_INPUT = [By.XPATH, "//div/div/label[text()='Пароль']"]
+    PASSWORD_INPUT = [By.XPATH, ".//label[text()='Пароль']"]
 
-    LOCATORS_REG_FORM = [By.XPATH, "//*[@id='root']/div/main/div/form"]
+    LOCATORS_REG_FORM = [By.XPATH, ".//div/main/div/form"]
 
-    QUASTION_ALLREADY_REG = [By.XPATH, "//div/p[text()='Уже зарегистрированы?']"]
+    QUASTION_ALLREADY_REG = [By.XPATH, ".//p[text()='Уже зарегистрированы?']"]
 
-    LINK_ALLREADY_REG = [By.XPATH, "//div/p/a[text()='Войти']"]
+    LINK_ALLREADY_REG = [By.XPATH, ".//a[text()='Войти']"]

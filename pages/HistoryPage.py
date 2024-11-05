@@ -9,7 +9,7 @@ class HistoryPage(BasePage):
 
     @allure.step('Открытие старицы заказов по отдельной ссылке.')
     def history_page_url(self):
-        return self.driver.get(URL.HISTORY_URL)
+        return self.get_url(URL.HISTORY_URL)
 
     @allure.step('Нажимаем кнопку выход из дичного кабинета')
     def click_logout(self):

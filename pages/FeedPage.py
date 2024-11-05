@@ -9,7 +9,7 @@ class AllOrdersPage(BasePage):
 
     @allure.step('Инициируем открытие страницы.')
     def feed_page_open(self):
-        return self.driver.get(URL.ALL_ORDERS_URL)
+        return self.get_url(URL.ALL_ORDERS_URL)
 
     @allure.step('Ищем текст с общим количеством заказов.')
     def find_total_text(self):
